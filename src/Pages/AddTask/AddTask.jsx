@@ -28,7 +28,7 @@ const AddTask = () => {
     const { email: taskProviderEmail } = currentUser;
     const { taskName, taskDescription } = data;
     console.log("taskName: ", taskName, "\ntaskDescription:", taskDescription);
-    fetch("http://localhost:5001/addtask", {
+    fetch("https://my-task-hub.vercel.app/addtask", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

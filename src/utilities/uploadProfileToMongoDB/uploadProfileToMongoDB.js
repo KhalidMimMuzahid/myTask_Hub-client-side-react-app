@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 const uploadProfileToMongoDB = (userInfoForDB) => {
-  return fetch("http://localhost:5001/insertusertodb", {
+  return fetch("https://my-task-hub.vercel.app/insertusertodb", {
     method: "POST",
     headers: {
       "content-type": "application/json",

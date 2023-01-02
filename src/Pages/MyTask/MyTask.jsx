@@ -5,7 +5,9 @@ const MyTask = () => {
   const [myTasks, setMyTasks] = useState([]);
   const { currentUser } = useContext(MyContext);
   useEffect(() => {
-    fetch(`http://localhost:5001/myalltask?email=${currentUser?.email}`)
+    fetch(
+      `https://my-task-hub.vercel.app/myalltask?email=${currentUser?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setMyTasks(data));
   }, [currentUser]);

@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 
 const checkAlreadyUser = (uid) => {
-  return fetch(`http://localhost:5001/checkuseralreadyindatabase?uid=${uid}`);
+  return fetch(
+    `https://my-task-hub.vercel.app/checkuseralreadyindatabase?uid=${uid}`
+  );
 };
 
 export default checkAlreadyUser;
