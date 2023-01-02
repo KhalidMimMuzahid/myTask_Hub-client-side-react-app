@@ -9,19 +9,39 @@ import {
   Textarea,
   Typography,
 } from "@material-tailwind/react";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { MyContext } from "../../MyProvider/MyProvider";
 
 const AddTask = () => {
+  const { currentUser } = useContext(MyContext);
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
   const handleFormSubmit = (data) => {
+    console.log("xxx", currentUser);
+    const { email: taskProviderEmail } = currentUser;
     const { taskName, taskDescription } = data;
     console.log("taskName: ", taskName, "\ntaskDescription:", taskDescription);
+    fetch("http://localhost:5001/addtask", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ taskProviderEmail, taskName, taskDescription }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.acknowledged) {
+          toast.success("task inserted successfully");
+          reset();
+        }
+      });
   };
   return (
     <div className="mx-auto">

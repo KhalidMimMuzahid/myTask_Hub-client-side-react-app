@@ -144,7 +144,7 @@ function Header() {
               </>
             ) : (
               <>
-                <Link>
+                <Link to="/signin">
                   <Button variant="gradient" size="sm" className="inline-block">
                     <span>Sign In</span>
                   </Button>
